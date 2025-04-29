@@ -4,23 +4,3 @@ For this Bayesian Network, a data-driven approach has been discarded as the sele
 Instead,the following logic-driven approach has been applied: 
 
 TODO The prior probability can be computed directly on the data, positive cases / possible cases
-
-# Calculate P(In <= 5)
-prob_in_le_5 = 0
-for i in low_intentionality_states:
-    prob_in_le_5 += variable_eliminator.query(variables=['Intentionality'], evidence={'Intentionality': i}).get_value(**{'Intentionality': i})
-
-# Calculate P(T > 30 and In <= 5)
-prob_t_gt_30_and_in_le_5 = 0
-for i in low_intentionality_states:
-    probability_distribution_of_time_given_intentionality = variable_eliminator.query(variables=['Time'], evidence={'Intentionality': i})
-    for t in long_time_states:
-        prob_t_gt_30_and_in_le_5 += probability_distribution_of_time_given_intentionality.get_value(**{'Time': t})
-
-# Calculate the conditional probability
-if prob_in_le_5 > 0:
-    final_result = prob_t_gt_30_and_in_le_5 / prob_in_le_5
-else:
-    final_result = 0.0  # Avoid division by zero
-
-print(f"P(T>30|In<=5): {final_result}")
