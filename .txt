@@ -1,6 +1,0 @@
-To build a Bayesian Network, variables are inserted one by one following an ordering. 
-At each step, a link between the new variable and the old ones can be added according to a specific criterion. 
-For this Bayesian Network, a data-driven approach has been discarded as the selected variables are totally intertwined with eachother. 
-Instead,the following logic-driven approach has been applied: 
-
-TODO The prior probability can be computed directly on the data, positive cases / possible cases
